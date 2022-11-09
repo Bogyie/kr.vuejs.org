@@ -1,0 +1,1190 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="with-v3-banner">
+  <head>
+    <title>조건부 렌더링 — Vue.js</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="alternate" hreflang="x-default" href="https://vuejs.org/v2/guide/conditional.html">
+    <link rel="alternate" hreflang="zh" href="https://v2.cn.vuejs.org/v2/guide/conditional.html">
+    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/v2/guide/conditional.html">
+    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/v2/guide/conditional.html">
+    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/v2/guide/conditional.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/v2/guide/conditional.html">
+    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/v2/guide/conditional.html">
+    <link rel="alternate" hreflang="es" href="https://es.vuejs.org/v2/guide/conditional.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="조건부 렌더링 — Vue.js">
+    <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta property="og:image" content="https://vuejs.org/images/logo.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="조건부 렌더링 — Vue.js">
+    <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="twitter:image" content="https://vuejs.org/images/logo.png">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+    <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+    <link rel="icon" href="/images/logo.svg">
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://maxcdn.bootstrapcdn.com" rel="preconnect" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto|Roboto Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:500&text=Vue.js&display=swap" rel="stylesheet">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- main page styles -->
+    
+<link rel="stylesheet" href="/css/page.css">
+
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+
+    
+
+    <script>
+      Vue.config.productionTip = false
+      window.PAGE_TYPE = "guide"
+    </script>
+
+    <!-- ga -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-46852172-1', 'vuejs.org');
+      ga('send', 'pageview');
+    </script>
+
+    <!-- vimeo analytics -->
+    <script type="text/javascript" defer="defer" src="https://extend.vimeocdn.com/ga/72160148.js"></script>
+  <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Vue.js" type="application/atom+xml">
+</head>
+  <body class="docs" data-v3-url="/guide/essentials/conditional.html">
+
+    
+      <a id="vs-top" class="vs-hidden" href="#" target="_blank">
+  <div class="vs-background-wrapper">
+    <div class="vs-logo"></div>
+    <div class="vs-core">
+      <div class="vs-slogan-wrapper">
+        <div id="vs-slogan" class="vs-slogan"></div>
+        <div id="vs-subline" class="vs-subline"></div>
+      </div>
+      <div class="vs-button-wrapper">
+        <div id="vs-button" class="vs-button"></div>
+      </div>
+    </div>
+    <div
+      id="vs-close"
+      class="vs-close">
+      <img src="https://vueschool.io/images/close.svg" alt="Close">
+    </div>
+  </div>
+</a>
+
+    
+
+    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div>
+  <div id="v3-banner">
+    <span class="hidden-sm">You’re browsing the documentation for v2.x and earlier.</span>
+    <a target="_blank" rel="noopener" href="https://vuejs.org/">Click here</a> for v3.x documentation.
+  </div>
+
+  <header id="header">
+    <a id="logo" href="/">
+      <img src="/images/logo.svg" alt="Vue logo">
+      <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+      <li>
+  <form id="search-form">
+    <input type="text" id="search-query-nav" class="search-query st-default-search-input" aria-label="Search">
+  </form>
+</li>
+<li class="nav-dropdown-container learn">
+  <a class="nav-link current">배우기</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>문서</h4></li>
+    <li>
+      <ul>
+        <li><a href="/v2/guide/" class="nav-link current">가이드</a></li>
+        <li><a href="/v2/api/" class="nav-link">API</a></li>
+        <li><a href="/v2/style-guide/" class="nav-link">스타일 가이드</a></li>
+        <li><a href="/v2/examples/" class="nav-link">예시</a></li>
+        <li><a href="/v2/cookbook/" class="nav-link">쿡북</a></li>
+      </ul>
+    </li>
+    <li><h4>영상 강의</h4></li>
+    <li>
+      <ul>
+        <li>
+          <a href="https://www.vuemastery.com/courses/" class="nav-link" target="_blank" rel="sponsored noopener">
+            Vue Mastery
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://vueschool.io/?friend=vuejs&utm_source=Vuejs.org&utm_medium=Link&utm_content=Navbar%20Dropdown"
+            class="nav-link"
+            target="_blank" rel="sponsored noopener"
+          >
+            Vue School
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">에코시스템</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>도움</h4></li>
+    <li><ul>
+      <li><a href="https://forum.vuejs.org/" class="nav-link" target="_blank" rel="noopener">Forum</a></li>
+      <li><a href="https://chat.vuejs.org/" class="nav-link" target="_blank" rel="noopener">Chat</a></li>
+      <li><a href="https://events.vuejs.org/meetups/" class="nav-link" target="_blank" rel="noopener">Meetups</a></li>
+    </ul></li>
+    <li><h4>도구</h4></li>
+    <li>
+      <ul>
+        <li><a href="https://github.com/vuejs/vue-devtools" class="nav-link" target="_blank" rel="noopener">Devtools</a></li>
+        <li><a href="https://cli.vuejs.org/" class="nav-link" target="_blank" rel="noopener">Vue CLI</a></li>
+        <li><a href="https://vue-loader.vuejs.org" class="nav-link" target="_blank" rel="noopener">Vue Loader</a></li>
+      </ul>
+    </li>
+    <li><h4>코어 라이브러리</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank" rel="noopener">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank" rel="noopener">Vuex</a></li>
+      <li><a href="https://v2.ssr.vuejs.org/" class="nav-link" target="_blank" rel="noopener">Vue Server Renderer</a></li>
+    </ul></li>
+    <li><h4>뉴스</h4></li>
+    <li><ul>
+      <li><a href="https://news.vuejs.org" class="nav-link" target="_blank" rel="noopener">Weekly News</a></li>
+      <li><a href="https://github.com/vuejs/vue/projects/6" class="nav-link" target="_blank" rel="noopener">Roadmap</a></li>
+      <li><a href="https://events.vuejs.org/" class="nav-link" target="_blank" rel="noopener">Events</a></li>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank" rel="noopener">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank" rel="noopener">Blog</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank" rel="noopener">Jobs</a></li>
+      <li><a href="https://dev.to/t/vue" class="nav-link" target="_blank" rel="noopener">DEV Community</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li>
+  <a href="/v2/guide/team.html" class="nav-link team">팀</a>
+</li>
+<li class="nav-dropdown-container resources">
+  <a href="#" class="nav-link">리소스</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="/resources/partners.html" class="nav-link">파트너</a></li>
+    <li><a href="/resources/themes.html" class="nav-link">테마</a></li>
+    <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank" rel="noopener">Awesome Vue</a></li>
+    <li><a href="https://awesomejs.dev/for/vue/" class="nav-link" target="_blank" rel="noopener">Browse packages for Vue</a></li>
+  </ul>
+</li>
+
+<!-- <li>
+  <a href="/partners" class="nav-link ">Partners</a>
+</li> -->
+<li class="nav-dropdown-container support-vue">
+  <a href="/support-vuejs/" class="nav-link">Vue 후원하기</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="/support-vuejs/#One-time-Donations" class="nav-link">1회 후원하기</a></li>
+    <li><a href="/support-vuejs/#Recurring-Pledges" class="nav-link">정기후원</a></li>
+    <li><a href="https://vue.threadless.com" target="_blank" rel="noopener" class="nav-link">T-Shirt 상점</a></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container language">
+  <a class="nav-link">Translations</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a target="_blank" rel="noopener" href="https://v2.cn.vuejs.org/v2/guide/conditional.html" class="nav-link">中文</a></li>
+    <li><a target="_blank" rel="noopener" href="https://jp.vuejs.org/v2/guide/conditional.html" class="nav-link">日本語</a></li>
+    <li><a target="_blank" rel="noopener" href="https://ru.vuejs.org/v2/guide/conditional.html" class="nav-link">Русский</a></li>
+    <li><a target="_blank" rel="noopener" href="https://kr.vuejs.org/v2/guide/conditional.html" class="nav-link">한국어</a></li>
+    <li><a target="_blank" rel="noopener" href="https://br.vuejs.org/v2/guide/conditional.html" class="nav-link">Português</a></li>
+    <li><a target="_blank" rel="noopener" href="https://fr.vuejs.org/v2/guide/conditional.html" class="nav-link">Français</a></li>
+    <li><a target="_blank" rel="noopener" href="https://vi.vuejs.org/v2/guide/conditional.html" class="nav-link">Tiếng Việt</a></li>
+    <li><a target="_blank" rel="noopener" href="https://es.vuejs.org/v2/guide/conditional.html" class="nav-link">Español</a></li>
+    <li><a target="_blank" rel="noopener" href="https://docs.vuejs.id/v2/guide/conditional.html" class="nav-link">Bahasa Indonesia</a></li>
+  </ul>
+</li>
+
+
+    </ul>
+  </header>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+        
+  
+
+<div class="sidebar">
+  <div class="sidebar-inner">
+    
+    <div class="list">
+      
+        <h2>
+          
+          가이드
+          
+            <select class="version-select">
+              <option value="">3.x</option>
+              <option value="SELF" selected>2.x</option>
+              <option value="v1">1.0</option>
+              <option value="012">0.12</option>
+              <option value="011">0.11</option>
+            </select>
+          
+        </h2>
+        <ul class="menu-root">
+  
+    
+    
+      
+        <li><h3>필수요소</h3></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/installation.html" class="sidebar-link">설치방법</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/index.html" class="sidebar-link">시작하기</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/instance.html" class="sidebar-link">Vue 인스턴스</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/syntax.html" class="sidebar-link">템플릿 문법</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/computed.html" class="sidebar-link">computed와 watch</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/class-and-style.html" class="sidebar-link">클래스와 스타일 바인딩</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/conditional.html" class="sidebar-link current">조건부 렌더링</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/list.html" class="sidebar-link">리스트 렌더링</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/events.html" class="sidebar-link">이벤트 핸들링</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/forms.html" class="sidebar-link">폼 입력 바인딩</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/components.html" class="sidebar-link">컴포넌트</a>
+    </li>
+  
+    
+    
+      
+      
+        <li><h3>컴포넌트 딥다이브</h3></li>
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/components-registration.html" class="sidebar-link">컴포넌트 등록</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/components-props.html" class="sidebar-link">Props</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/components-custom-events.html" class="sidebar-link">커스텀 이벤트</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/components-slots.html" class="sidebar-link">슬롯(Slots)</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/components-dynamic-async.html" class="sidebar-link">동적 & 비동기 컴포넌트</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/components-edge-cases.html" class="sidebar-link">예외적인 상황들</a>
+    </li>
+  
+    
+    
+      
+      
+      
+        <li><h3>트랜지션 & 애니메이션</h3></li>
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/transitions.html" class="sidebar-link">진입/진출 그리고 리스트 트랜지션</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/transitioning-state.html" class="sidebar-link">상태 트랜지션</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+        <li><h3>재사용 & 컴포지션</h3></li>
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/mixins.html" class="sidebar-link">믹스인</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/custom-directive.html" class="sidebar-link">사용자 지정 디렉티브</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/render-function.html" class="sidebar-link">Render Functions & JSX</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/plugins.html" class="sidebar-link">플러그인</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/filters.html" class="sidebar-link">필터</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+        <li><h3>도구</h3></li>
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/single-file-components.html" class="sidebar-link">싱글 파일 컴포넌트</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/testing.html" class="sidebar-link">Testing</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/unit-testing.html" class="sidebar-link">단위 테스팅</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/typescript.html" class="sidebar-link">TypeScript 지원</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/deployment.html" class="sidebar-link">프로덕션 배포 팁</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+        <li><h3>스케일링 업</h3></li>
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/routing.html" class="sidebar-link">라우팅</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/state-management.html" class="sidebar-link">상태 관리</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/ssr.html" class="sidebar-link">서버사이드 렌더링</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/security.html" class="sidebar-link">보안</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+        <li><h3>심화</h3></li>
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/reactivity.html" class="sidebar-link">반응형에 대해 깊이 알아보기</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><h3>마이그레이션</h3></li>
+      
+      
+    
+    <li>
+      <a href="/v2/guide/migration.html" class="sidebar-link">Vue 1.x에서 마이그레이션</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/migration-vue-router.html" class="sidebar-link">Vue Router 0.7.x으로 부터 마이그레이션</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/migration-vuex.html" class="sidebar-link">Vuex 0.6.x에서 1.0로 마이그레이션</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><h3>메타</h3></li>
+      
+    
+    <li>
+      <a href="/v2/guide/comparison.html" class="sidebar-link">다른 프레임워크와의 비교</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/join.html" class="sidebar-link">Vue.js 커뮤니티에 참여하세요!</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="/v2/guide/team.html" class="sidebar-link">팀 구성원 만나기</a>
+    </li>
+  
+</ul>
+
+      
+    </div>
+  </div>
+</div>
+
+<div id="sidebar-sponsors-platinum-right">
+  <div class="main-sponsor">
+    <span>플래티넘 스폰서</span>
+    <div>
+    <a href="https://www.vuemastery.com/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vuemastery.png" alt="VueMastery">
+    </a>
+    <a href="https://vueschool.io/?utm_source=Vuejs.org&utm_medium=Banner&utm_campaign=Sponsored%20Banner&utm_content=V1" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vueschool.png" alt="VueSchool">
+    </a>
+    <a href="https://vehikl.com/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vehikl.png" alt="Vehikl">
+    </a>
+    <a href="https://passionatepeople.io/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/passionate_people.png" alt="Passionate People">
+    </a>
+    <a href="https://www.storyblok.com" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/storyblok.png" alt="Storyblok">
+    </a>
+    <a href="https://ionicframework.com/vue?utm_source=partner&utm_medium=referral&utm_campaign=vuesponsorship&utm_content=vuedocs" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/ionic.png?v2" alt="Ionic">
+    </a>
+    <a href="https://volta.net/?utm_source=vuejs.org&utm_campaign=sponsoring/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/volta.svg" alt="Volta">
+    </a>
+    <a href="https://buttercms.com/vuejs-cms/?utm_source=vuejs.org&utm_medium=banner&utm_campaign=sponsorship" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/buttercms.svg" alt="ButterCMS">
+    </a>
+    <a href="https://www.sanofi.com/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/sanofi.png" alt="Sanofi">
+    </a>
+    <a href="https://code-dict.com" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/codedict.svg" alt="CodeDict">
+    </a>
+    <a href="https://opencollective.com/2021-frameworks-fund" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/chrome_frameworks_fund.png" alt="Chrome Frameworks Fund">
+    </a>
+    <a href="https://marker.io/?utm_source=vuejs&utm_medium=sponsor&utm_campaign=dev-community" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/marker_io.svg" alt="Marker.io">
+    </a>
+    </div>
+  </div>
+  <a class="become-backer" href="/support-vuejs">
+    스폰서 되기
+  </a>
+</div>
+
+
+
+
+<div class="content guide with-sidebar conditional-guide">
+  <p class="tip warning v3-warning">
+    You’re browsing the documentation for v2.x and earlier.
+    For v3.x, <a target="_blank" rel="noopener" href="https://vuejs.org/">click here</a>.
+  </p>
+
+  
+    
+      
+<div id="ad">
+  <script
+    async
+    type="text/javascript"
+    src="//cdn.carbonads.com/carbon.js?serve=CEBDT27Y&placement=vuejsorg"
+    id="_carbonads_js">
+  </script>
+</div>
+
+
+    
+  
+  
+    <h1>조건부 렌더링</h1>
+  
+  
+    <h2 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a><code>v-if</code></h2><p><code>v-if</code> 디렉티브는 조건에 따라 블록을 렌더링하기 위해 사용됩니다. 블록은 디렉티브의 표현식이 true 값을 반환할 때만 렌더링됩니다.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;awesome&quot;</span>&gt;</span>Vue is awesome!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>v-else</code>와 함께 “else 블록”을 추가하는 것도 가능합니다.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;awesome&quot;</span>&gt;</span>Vue is awesome!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">v-else</span>&gt;</span>Oh no 😢<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="lt-template-gt-에-v-if을-갖는-조건부-그룹-만들기"><a href="#lt-template-gt-에-v-if을-갖는-조건부-그룹-만들기" class="headerlink" title="&lt;template&gt;에 v-if을 갖는 조건부 그룹 만들기"></a><code>&lt;template&gt;</code>에 <code>v-if</code>을 갖는 조건부 그룹 만들기</h3><p><code>v-if</code>는 디렉티브기 때문에 하나의 엘리먼트에 추가해야합니다. 하지만 하나 이상의 엘리먼트를 트랜지션하려면 어떻게 해야할까요? 이 경우 우리는 보이지 않는 래퍼 역할을 하는 <code>&lt;template&gt;</code> 엘리먼트에 <code>v-if</code>를 사용할 수 있습니다. 최종 렌더링 결과에는 <code>&lt;template&gt;</code> 엘리먼트가 포함되지 않습니다.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;ok&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Paragraph 1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Paragraph 2<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="v-else"><a href="#v-else" class="headerlink" title="v-else"></a><code>v-else</code></h3><p><code>v-else</code> 디렉티브를 사용하여 <code>v-if</code>에 대한 “else 블록”을 나타낼 수 있습니다</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;Math.random() &gt; 0.5&quot;</span>&gt;</span><br>  이제 나를 볼 수 있어요<br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-else</span>&gt;</span><br>  이제는 안보입니다<br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>v-else</code> 엘리먼트는 <code>v-if</code> 엘리먼트 또는 <code>v-else-if</code> 엘리먼트 바로 뒤에 있어야 합니다. 그렇지 않으면 인식할 수 없습니다.</p>
+<h3 id="v-else-if"><a href="#v-else-if" class="headerlink" title="v-else-if"></a><code>v-else-if</code></h3><blockquote>
+<p>2.1.0+부터 새롭게 추가됨</p>
+</blockquote>
+<p><code>v-else-if</code>는 이름에서 알 수 있듯, <code>v-if</code>에 대한 “else if 블록” 역할을 합니다. 또한 여러 개를 사용할 수 있습니다.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;type === &#x27;A&#x27;&quot;</span>&gt;</span><br>  A<br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-else-if</span>=<span class="hljs-string">&quot;type === &#x27;B&#x27;&quot;</span>&gt;</span><br>  B<br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-else-if</span>=<span class="hljs-string">&quot;type === &#x27;C&#x27;&quot;</span>&gt;</span><br>  C<br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-else</span>&gt;</span><br>  Not A/B/C<br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>v-else</code>와 마찬가지로, <code>v-else-if</code> 엘리먼트는 <code>v-if</code> 또는 <code>v-else-if</code> 엘리먼트 바로 뒤에 와야 합니다.</p>
+<h3 id="key를-이용한-재사용-가능한-엘리먼트-제어"><a href="#key를-이용한-재사용-가능한-엘리먼트-제어" class="headerlink" title="key를 이용한 재사용 가능한 엘리먼트 제어"></a><code>key</code>를 이용한 재사용 가능한 엘리먼트 제어</h3><p>Vue는 가능한 한 효율적으로 엘리먼트를 렌더링하려고 시도하며 종종 처음부터 렌더링을 하지않고 다시 사용합니다. Vue를 매우 빠르게 만드는데 도움이 되는 것 이외에 몇가지 유용한 이점이 있습니다. 예를 들어 사용자가 여러 로그인 유형을 트랜지션할 수 있도록 허용하는 경우입니다.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;loginType === &#x27;username&#x27;&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>사용자 이름<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;사용자 이름을 입력하세요&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-else</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>이메일<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;이메일 주소를 입력하세요&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>위 코드에서 <code>loginType</code>을 바꾸어도 사용자가 이미 입력한 내용은 지워지지 않습니다. 두 템플릿 모두 같은 요소를 사용하므로 <code>&lt;input&gt;</code>은 대체되지 않고 단지 <code>placeholder</code>만 변경됩니다.</p>
+<p>폼 인풋에 텍스트를 입력하고 토글 버튼을 눌러 직접 확인하십시오.</p>
+
+<div id="no-key-example" class="demo">
+  <div>
+    <template v-if="loginType === 'username'">
+      <label>사용자 이름</label>
+      <input placeholder="사용자 이름을 입력하세요">
+    </template>
+    <template v-else>
+      <label>이메일</label>
+      <input placeholder="이메일 주소를 입력하세요">
+    </template>
+  </div>
+  <button @click="toggleLoginType">로그인 유형 변경</button>
+</div>
+<script>
+new Vue({
+  el: '#no-key-example',
+  data: {
+    loginType: 'username'
+  },
+  methods: {
+    toggleLoginType: function () {
+      return this.loginType = this.loginType === 'username' ? 'email' : 'username'
+    }
+  }
+})
+</script>
+
+<p>이것은 항상 바람직하지는 않습니다. 때문에 “이 두 엘리먼트는 완전히 별개이므로 다시 사용하지 마십시오.”라고 알리는 방법을 제공합니다. 유일한 값으로 <code>key</code> 속성을 추가하십시오.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;loginType === &#x27;username&#x27;&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>사용자 이름<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;사용자 이름을 입력하세요&quot;</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;username-input&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-else</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>이메일<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;이메일 주소를 입력하세요&quot;</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;email-input&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>이제 트랜지션 할 때마다 입력이 처음부터 렌더링됩니다. 직접 확인해보세요.</p>
+
+<div id="key-example" class="demo">
+  <div>
+    <template v-if="loginType === 'username'">
+      <label>사용자 이름</label>
+      <input placeholder="사용자 이름을 입력하세요" key="username-input">
+    </template>
+    <template v-else>
+      <label>이메일</label>
+      <input placeholder="이메일 주소를 입력하세요" key="email-input">
+    </template>
+  </div>
+  <button @click="toggleLoginType">로그인 유형 변경</button>
+</div>
+<script>
+new Vue({
+  el: '#key-example',
+  data: {
+    loginType: 'username'
+  },
+  methods: {
+    toggleLoginType: function () {
+      return this.loginType = this.loginType === 'username' ? 'email' : 'username'
+    }
+  }
+})
+</script>
+
+<p><code>&lt;label&gt;</code> 엘리먼트는 <code>key</code> 속성이 없기 때문에 여전히 효율적으로 재사용 됩니다.</p>
+<h2 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a><code>v-show</code></h2><p>엘리먼트를 조건부로 표시하기 위한 또 다른 옵션은 <code>v-show</code> 디렉티브입니다. 사용법은 거의 동일합니다.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">v-show</span>=<span class="hljs-string">&quot;ok&quot;</span>&gt;</span>안녕하세요!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>차이점은 <code>v-show</code>가 있는 엘리먼트는 항상 렌더링 되고 DOM에 남아있다는 점입니다. <code>v-show</code>는 단순히 엘리먼트에 <code>display</code> CSS 속성을 토글합니다.</p>
+<p class="tip"><code>v-show</code>는 <code>&lt;template&gt;</code> 구문을 지원하지 않으며 <code>v-else</code>와도 작동하지 않습니다.</p>
+
+<h2 id="v-if-vs-v-show"><a href="#v-if-vs-v-show" class="headerlink" title="v-if vs v-show"></a><code>v-if</code> vs <code>v-show</code></h2><p><code>v-if</code>는 조건부 블럭 안의 이벤트 리스너와 자식 컴포넌트가 토글하는 동안 적절하게 제거되고 다시 만들어지기 때문에 “진짜” 조건부 렌더링 입니다</p>
+<p><code>v-if</code>는 또한 <strong>게으릅니다</strong> 초기 렌더링에서 조건이 거짓인 경우 아무것도 하지 않습니다. 조건 블록이 처음으로 참이 될 때 까지 렌더링 되지 않습니다.</p>
+<p>비교해보면, <code>v-show</code>는 훨씬 단순합니다. CSS 기반 토글만으로 초기 조건에 관계 없이 엘리먼트가 항상 렌더링 됩니다.</p>
+<p>일반적으로 <code>v-if</code>는 토글 비용이 높고 <code>v-show</code>는 초기 렌더링 비용이 더 높습니다. 매우 자주 바꾸기를 원한다면 <code>v-show</code>를, 런타임 시 조건이 바뀌지 않으면 <code>v-if</code>를 권장합니다.</p>
+<h2 id="v-if-와-v-for"><a href="#v-if-와-v-for" class="headerlink" title="v-if 와 v-for"></a><code>v-if</code> 와 <code>v-for</code></h2><p class="tip"><code>v-if</code>와 <code>v-for</code>을 함께 사용하는 것을 권장하지 않습니다. 자세한 내용은<a href="/v2/style-guide/#Avoid-v-if-with-v-for-essential">style guide</a>을 확인하십시오.</p>
+
+<p><code>v-if</code>와 함께 사용하는 경우, <code>v-for</code>는  <code>v-if</code>보다 높은 우선순위를 갖습니다. 자세한 내용은 <a href="../guide/list.html#v-for-with-v-if">리스트 렌더링 가이드</a>를 확인하십시오.</p>
+
+  
+  
+    <div class="guide-links">
+      
+      
+        <span>← <a href="/v2/guide/class-and-style.html">클래스와 스타일 바인딩</a></span>
+      
+      
+      
+        <span style="float: right;"><a href="/v2/guide/list.html">리스트 렌더링</a> →</span>
+      
+    </div>
+  
+  <div class="footer">
+      <script src="//m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
+<div id="bsa-native"></div>
+<script>
+_bsa.init('custom', 'CKYD62QM', 'placement:vuejsorg',
+  {
+    target: '#bsa-native',
+    template: '<a class="native-box" href="##statlink##"><div class="native-sponsor">Sponsor</div><div class="native-text"><strong>##company##</strong> — ##description##</div></a>'
+  }
+);
+</script>
+
+
+    이 문서에 문제를 제보하거나 기여하고 싶은 부분이 있으십니까?
+    <a href="https://github.com/vuejs-kr/kr.vuejs.org/blob/master/src/v2/guide/conditional.md" rel="noopener" target="_blank">
+      Github에서 이 페이지를 수정하세요!
+    </a>
+  </div>
+</div>
+
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- search -->
+    <link href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+    
+<link rel="stylesheet" href="/css/search.css">
+
+    <script src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script>
+    [
+      '#search-query-nav',
+      '#search-query-sidebar',
+      '#search-query-menu'
+    ].forEach(function (selector) {
+      if (!document.querySelector(selector)) return
+      // search index defaults to v2
+      var match = window.location.pathname.match(/^\/(v\d+)/)
+      var version = match ? match[1] : 'v2'
+      docsearch({
+        appId: 'ML0LEBN7FQ',
+        apiKey: 'f49cbd92a74532cc55cfbffa5e5a7d01',
+        indexName: 'vuejs',
+        inputSelector: selector,
+        algoliaOptions: { facetFilters: ["version:" + version] },
+        autocompleteOptions: { hint: false, appendTo: 'body'}
+      })
+    })
+
+    // unregister service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for(let registration of registrations) {
+          registration.unregister()
+        }
+      })
+    }
+    </script>
+    <script src="/js/v3-notice.js"></script>
+  </body>
+</html>
