@@ -352,9 +352,9 @@
   
   
     <h1 id="스타일-가이드"><a href="#스타일-가이드" class="headerlink" title="스타일 가이드"></a>스타일 가이드</h1><p>이 문서는 Vue 코드에 대한 공식 스타일 가이드입니다. 만약 현재 Vue를 사용하여 프로젝트를 진행 중이라면 이 문서는 에러와 바이크쉐딩 (bikeshedding), 안티패턴을 피하는 좋은 참조가 될 것 입니다. 그러나 이 문서에서 제시하는 스타일 가이드가 당신의 프로젝트에 무조건 적합한 것은 아닙니다. 그러므로 당신의 경험과 기술 스택, 개인적 통찰력을 바탕으로 이 스타일 가이드가 적용되는 것을 권장해드립니다.</p>
-<p>대부분의 경우 우리는 HTML과 자바스크립트에 대한 제안은 일반적으로 피합니다. 우리는 당신이 세미콜론이나 쉼표(trailing commas)에 대한 사용 여부는 신경 쓰지 않습니다. 우리는 당신이 HTML의 속성값을 위해 작은따옴표를 사용하지는 큰따옴표를 사용하는지 신경 쓰지 않습니다. 그러나 특정 패턴이 뷰 컨텍스트에서 유용하다고 발견된 경우 예외가 존재합니다.</p>
+<p>대부분의 경우 우리는 HTML과 자바스크립트에 대한 제안은 일반적으로 피합니다. 우리는 당신이 세미콜론이나 쉼표(trailing commas)에 대한 사용 여부는 신경 쓰지 않습니다. 우리는 당신이 HTML의 속성값을 위해 작은따옴표를 사용하는지 큰따옴표를 사용하는지 신경 쓰지 않습니다. 그러나 특정 패턴이 뷰 컨텍스트에서 유용하다고 발견된 경우 예외가 존재합니다.</p>
 <blockquote>
-<p><strong>Soon, we’ll also provide tips for enforcement.</strong> Sometimes you’ll simply have to be disciplined, but wherever possible, we’ll try to show you how to use ESLint and other automated processes to make enforcement simpler.</p>
+<p><strong>곧, 우린 실행에 필요한 팁들도 제공할 예정입니다.</strong> 단순한 수준의 사전지식이 필요한 경우도 있지만(have to be disciplined), 가급적 ESLint를 비롯한 다른 자동화된 프로세스들을 더 쉽게 실행할 수 있도록 예시를 들어 설명하고 있습니다.</p>
 </blockquote>
 <p>마지막으로, 우리는 규칙을 4가지 범주로 분류하였습니다.</p>
 <h2 id="규칙-분류"><a href="#규칙-분류" class="headerlink" title="규칙 분류"></a>규칙 분류</h2><h3 id="우선순위-A-필수"><a href="#우선순위-A-필수" class="headerlink" title="우선순위 A: 필수"></a>우선순위 A: 필수</h3><p>이 규칙은 오류를 예방하는데 도움을 주기 때문에 모든 비용을 통해서 학습하고 준수하여야 합니다. 예외 상황이 존재하겠지만 매우 드물며 자바스크립트와 뷰에 대한 전문 지식이 있어야 만들 수 있습니다.</p>
@@ -528,8 +528,9 @@
 <h4 id="좋음-7"><a href="#좋음-7" class="headerlink" title="좋음"></a>좋음</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">components/<br>|- TodoList.js<br>|- TodoItem.js<br></code></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">components/<br>|- TodoList.vue<br>|- TodoItem.vue<br></code></pre></td></tr></table></figure>
 </div>
-<h3 id="싱글-파일-컴포넌트-이름-규칙-지정-casing-매우-추천함"><a href="#싱글-파일-컴포넌트-이름-규칙-지정-casing-매우-추천함" class="headerlink" title="싱글 파일 컴포넌트 이름 규칙 지정(casing) 매우 추천함"></a>싱글 파일 컴포넌트 이름 규칙 지정(casing) <sup data-p="b">매우 추천함</sup></h3><p><strong>Filenames of <a href="../guide/single-file-components.html">single-file components</a> should either be always PascalCase or always kebab-case.</strong></p>
-<p>PascalCase works best with autocompletion in code editors, as it’s consistent with how we reference components in JS(X) and templates, wherever possible. However, mixed case filenames can sometimes create issues on case-insensitive file systems, which is why kebab-case is also perfectly acceptable.</p>
+<h3 id="싱글-파일-컴포넌트-이름-규칙-지정-casing-매우-추천함"><a href="#싱글-파일-컴포넌트-이름-규칙-지정-casing-매우-추천함" class="headerlink" title="싱글 파일 컴포넌트 이름 규칙 지정(casing) 매우 추천함"></a>싱글 파일 컴포넌트 이름 규칙 지정(casing) <sup data-p="b">매우 추천함</sup></h3><p><strong><a href="../guide/single-file-components.html">싱글 파일 컴포넌트(SFC)</a>의 파일명은 항상 PascalCase 또는 kebab-case 형태로 작명되어야 합니다.</strong></p>
+<p>PascalCase는 templates과 JS, JSX 파일 내의 컴포넌트를 참조하는 방식과 거의 비슷하므로, 코드 편집기에서 자동 완성을 할 때 가장 효과적입니다.</p>
+<p>그러나 여러 가지 형태로 섞여 있는 파일명은 대소문자에 민감한(case-sensitive) 시스템에서 문제를 일으킬 수 있습니다. 이럴 때는 kebab-case가 굉장히 효과적입니다.</p>
 <div class="style-example example-bad">
 <h4 id="나쁨-8"><a href="#나쁨-8" class="headerlink" title="나쁨"></a>나쁨</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">components/<br>|- mycomponent.vue<br></code></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">components/<br>|- myComponent.vue<br></code></pre></td></tr></table></figure>
@@ -773,7 +774,7 @@
 <h4 id="좋음-21"><a href="#좋음-21" class="headerlink" title="좋음"></a>좋음</h4><figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">AppSidebar</span> <span class="hljs-attr">:style</span>=<span class="hljs-string">&quot;&#123; width: sidebarWidth + &#x27;px&#x27; &#125;&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
 </div>
-<h3 id="축약형-디렉티브-매우-추천함"><a href="#축약형-디렉티브-매우-추천함" class="headerlink" title="축약형 디렉티브 매우 추천함"></a>축약형 디렉티브 <sup data-p="b">매우 추천함</sup></h3><p><strong>Directive shorthands (<code>:</code> for <code>v-bind:</code>, <code>@</code> for <code>v-on:</code> and <code>#</code> for <code>v-slot</code>) should be used always or never.</strong></p>
+<h3 id="축약형-디렉티브-매우-추천함"><a href="#축약형-디렉티브-매우-추천함" class="headerlink" title="축약형 디렉티브 매우 추천함"></a>축약형 디렉티브 <sup data-p="b">매우 추천함</sup></h3><p><strong> 축약형 디텍티브( <code>v-bind:</code> 의 경우 <code>:</code>, <code>v-on:</code>의 경우 <code>@</code> 및 <code>v-slot</code>의 경우 <code>#</code>)는 모든 문서에 걸쳐서 일관되게 사용해야 합니다. 즉, 모든 문서에서 항상 사용하거나 전혀 사용하지 않아야 합니다.</strong></p>
 <div class="style-example example-bad">
 <h4 id="나쁨-22"><a href="#나쁨-22" class="headerlink" title="나쁨"></a>나쁨</h4><figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span></span><br><span class="hljs-tag">  <span class="hljs-attr">v-bind:value</span>=<span class="hljs-string">&quot;newTodoText&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">:placeholder</span>=<span class="hljs-string">&quot;newTodoInstructions&quot;</span></span><br><span class="hljs-tag">&gt;</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span></span><br><span class="hljs-tag">  <span class="hljs-attr">v-on:input</span>=<span class="hljs-string">&quot;onInput&quot;</span></span><br><span class="hljs-tag">  @<span class="hljs-attr">focus</span>=<span class="hljs-string">&quot;onFocus&quot;</span></span><br><span class="hljs-tag">&gt;</span><br></code></pre></td></tr></table></figure>
